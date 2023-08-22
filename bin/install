@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+## Install a specific version of a tool to a specified location.
+## https://asdf-vm.com/plugins/create.html#bin-install
+
+## -----------------------
+## Customization functions
+
+# kc_asdf_main() {
+#   local ns="$1"
+#   shift
+#
+#   return 0
+# }
+
+_kc_asdf_custom_source_build() {
+  local ns="install.source"
+  # shellcheck disable=SC2034
+  local version="$1" output="$2"
+  local concurrency="$3"
+
+  kc_asdf_commands "go"
+  local tmp
+  tmp="$(kc_asdf_temp_dir)"
+
+  GOBIN=$tmp go install -p "$concurrency" go.k6.io/xk6/cmd/xk6@latest
+  kc_asdf_debug "$ns" "install k6 builder at %s" "$tmp"
+
+  local xk6="$tmp/xk6"
+
+  XK6_K6_REPO="$PWD" \
+    XK6_BUILD_FLAGS="-p $concurrency -ldflags='-w -s'" \
+    "$xk6" build \
+    --output "$output/bin/$KC_ASDF_APP_NAME"
+}
+
+## -----------------------
+
+set -euo pipefail
+
+export KC_ASDF_PLUGIN_ENTRY_PATH=${BASH_SOURCE[0]}
+export KC_ASDF_PLUGIN_ENTRY_NAME
+KC_ASDF_PLUGIN_ENTRY_NAME="$(basename "$KC_ASDF_PLUGIN_ENTRY_PATH")"
+export KC_ASDF_PLUGIN_PATH
+KC_ASDF_PLUGIN_PATH=$(dirname "$(dirname "$KC_ASDF_PLUGIN_ENTRY_PATH")")
+
+# shellcheck source-path=SCRIPTDIR/../lib/commands.sh
+source "$KC_ASDF_PLUGIN_PATH/lib/commands.sh" "$@"

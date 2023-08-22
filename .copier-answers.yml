@@ -1,0 +1,71 @@
+---
+## Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v2.2.2
+_src_path: gh:kc-workspace/asdf-plugin-template.git
+addon_yaml:
+    archive: true
+    checksum: true
+    download: true
+    fetch: true
+    git: true
+    github: true
+    gpg: false
+    help: true
+    install: true
+    package: false
+    python: false
+    system: true
+    tags: true
+    version: false
+app_desc: An extensible load testing tool built for developer happiness
+app_name: k6
+app_repo: https://github.com/grafana/k6
+app_type: standalone
+app_website: https://k6.io/open-source/
+archive_conf_path: k6-v{version}-{os}-{arch}
+archive_conf_strip: 0
+archive_enabled: true
+archive_regex: (\\.tar\\.gz|\\.tgz|\\.zip)$
+checksum_conf_algorithm: 256
+checksum_enabled: true
+checksum_url: https://github.com/grafana/k6/releases/download/v{version}/k6-v{version}-checksums.txt
+custom_bin_paths: bin
+custom_non_stable_version: (-src|-dev|-latest|-stm|[-\.]rc|-alpha|-beta|[-\.]pre|-next|snapshot|master)
+custom_require_commands: ''
+download_url: https://github.com/grafana/k6/releases/download/v{version}/k6-v{version}-{os}-{arch}.{ext}
+gpg_enabled: false
+install_map_enabled: true
+install_map_method: move
+install_map_yaml:
+    k6: bin/k6
+package_enabled: false
+plugin_author: Kamontat Chantrachirathumrong
+plugin_name: asdf-k6
+plugin_org: kc-workspace
+plugin_repo: https://github.com/kc-workspace/asdf-k6.git
+source_enabled: true
+source_type: git
+source_url: https://github.com/grafana/k6.git
+sys_arch_enabled: true
+sys_arch_yaml:
+    aarch64*: arm64
+    armv5*: arm64
+    armv6*: arm64
+    armv7*: arm64
+    i386: amd64
+    i686: amd64
+    powerpc64le: amd64
+    ppc64le: amd64
+    x86: amd64
+    x86_64: amd64
+sys_ext_default: tar.gz
+sys_ext_enabled: true
+sys_ext_yaml:
+    macos-*: zip
+sys_os_enabled: true
+sys_os_yaml:
+    darwin: macos
+    linux: linux
+test_cmd_args: version
+version_file_enabled: false
+version_prefix: v
