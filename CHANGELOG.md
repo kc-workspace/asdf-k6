@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/kc-workspace/asdf-k6/compare/v1.0.0...v1.0.1) (2024-03-04)
+
+
+### Performance Improvements
+
+* update plugin from template [autocommit] ([691dc01](https://github.com/kc-workspace/asdf-k6/commit/691dc01d116751a962c1afe60342be93877d8bb5))
+* update plugin from template [autocommit] ([b4966ad](https://github.com/kc-workspace/asdf-k6/commit/b4966ada3f913b970582cc1151f4c3097cbbe1be))
+
 ## 1.0.0 (2023-11-06)
 
 
