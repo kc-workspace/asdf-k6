@@ -8,6 +8,11 @@ KC_ASDF_RES_PATH="${KC_ASDF_PLUGIN_PATH:?}/res"
 KC_ASDF_ADDON_LIST=""
 export KC_ASDF_RES_PATH KC_ASDF_ADDON_LIST
 
+## ASDF directories
+KC_ASDF_PLUGIN_NAME="$(basename "${KC_ASDF_PLUGIN_PATH:?}")"
+KC_ASDF_CORE_PATH="${ASDF_DIR:-$(cd "$(dirname "$(dirname "${KC_ASDF_PLUGIN_PATH:?}")")" && pwd)}"
+export KC_ASDF_PLUGIN_NAME KC_ASDF_CORE_PATH
+
 ## Plugin information
 KC_ASDF_ORG="kc-workspace"
 KC_ASDF_NAME="asdf-k6"

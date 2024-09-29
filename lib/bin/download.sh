@@ -25,9 +25,12 @@ __asdf_bin() {
   local outdir="${ASDF_DOWNLOAD_PATH:?}" outfile outpath
   local tmpdir tmpfile tmppath
   tmpdir="$(kc_asdf_temp_dir)"
-  local vars=("version=$version")
-  [ -n "${KC_ASDF_OS:-}" ] && vars+=("os=$KC_ASDF_OS")
-  [ -n "${KC_ASDF_ARCH:-}" ] && vars+=("arch=$KC_ASDF_ARCH")
+  local vars=(
+    "version=$version"
+    "channel=$(kc_asdf_download_channel "$version")"
+    "os=$KC_ASDF_OS"
+    "arch=$KC_ASDF_ARCH"
+  )
   [ -n "${KC_ASDF_EXT:-}" ] && vars+=("ext=$KC_ASDF_EXT")
   if command -v kc_asdf_version_parser >/dev/null; then
     local major minor patch
@@ -42,6 +45,7 @@ __asdf_bin() {
   if kc_asdf_present_dir "$outdir"; then
     kc_asdf_debug "$ns" "found download cache at %s" "$outdir"
     if [ -n "${ASDF_FORCE_DOWNLOAD:-}" ]; then
+      kc_asdf_debug "$ns" "force remove downloaded cache"
       rm -fr "$outdir" && mkdir "$outdir"
     else
       kc_asdf_info "$ns" \
