@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/kc-workspace/asdf-k6/compare/v1.0.1...v1.0.2) (2024-09-29)
+
+
+### Performance Improvements
+
+* **plugin:** upgrade template to version v2.7.4 [bot] ([a64acb3](https://github.com/kc-workspace/asdf-k6/commit/a64acb37dcf92527618a4bb62bc76cdd3d7b6930))
+
 ## [1.0.1](https://github.com/kc-workspace/asdf-k6/compare/v1.0.0...v1.0.1) (2024-03-04)
 
 
